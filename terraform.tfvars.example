@@ -1,0 +1,15 @@
+# Copy this file to terraform.tfvars and fill in your real values.
+# terraform.tfvars is gitignored, so your secrets stay out of GitHub.
+
+aws_region          = "ap-northeast-1"
+line_channel_secret = "your-line-channel-secret"
+
+# Sender must be a domain you own (NOT gmail/yahoo — their DMARC policy blocks it).
+ses_sender_domain = "yourdomain.com"
+ses_sender_email  = "line-notifier@yourdomain.com" # must be an address at ses_sender_domain
+
+# Recipient can be any inbox (your Gmail/Yahoo is fine).
+ses_recipient_email = "you@example.com"
+
+# Optional: set this to include the sender's display name in notifications.
+# line_channel_access_token = "your-long-lived-channel-access-token"

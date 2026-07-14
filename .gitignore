@@ -1,0 +1,33 @@
+# --- Terraform ---
+# State files contain your secrets in PLAINTEXT. Never commit them.
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+crash.log
+crash.*.log
+
+# Variable files hold your channel secret / emails. Only the .example is committed.
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Provider plugin cache and saved plans.
+# Note: .terraform.lock.hcl is intentionally NOT ignored — commit it to pin
+# provider versions across machines. It contains no secrets.
+.terraform/
+*.tfplan
+
+# --- Build artifacts ---
+build/
+*.zip
+
+# --- Local env / editor ---
+.env
+.env.*
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# --- Coding agents ---
+.claude
