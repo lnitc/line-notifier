@@ -48,3 +48,33 @@ variable "log_retention_days" {
   type        = number
   default     = 14
 }
+
+# --- Inbound feature: email -> LINE group push -------------------------------
+
+variable "inbound_subdomain" {
+  description = "Subdomain that receives trigger emails via SES. Its MX must point at SES; keep it separate from your main mail domain."
+  type        = string
+}
+
+variable "inbound_local_part" {
+  description = "Secret local-part of the trigger address (e.g. line-abc123 -> line-abc123@<inbound_subdomain>). Acts as a shared secret; keep it out of source."
+  type        = string
+  sensitive   = true
+}
+
+variable "allowed_senders" {
+  description = "Lowercased From addresses permitted to post to the group. Mail must also pass DMARC."
+  type        = list(string)
+}
+
+variable "line_group_id" {
+  description = "The LINE group ID that inbound emails are posted to (from the webhook payload of a message in that group)."
+  type        = string
+  sensitive   = true
+}
+
+variable "inbound_retention_days" {
+  description = "How many days to keep raw received emails in S3 before automatic deletion."
+  type        = number
+  default     = 7
+}

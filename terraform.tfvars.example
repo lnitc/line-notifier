@@ -11,5 +11,15 @@ ses_sender_email  = "line-notifier@yourdomain.com" # must be an address at ses_s
 # Recipient can be any inbox (your Gmail/Yahoo is fine).
 ses_recipient_email = "you@example.com"
 
-# Optional: set this to include the sender's display name in notifications.
+# Optional for notifications; REQUIRED for the inbound (email -> group) feature.
 # line_channel_access_token = "your-long-lived-channel-access-token"
+
+# --- Inbound feature: email -> LINE group ---
+# A subdomain whose MX points at SES (kept separate from your main mail domain).
+inbound_subdomain = "post.yourdomain.com"
+# Secret local-part; the trigger address becomes <this>@<inbound_subdomain>.
+inbound_local_part = "line-CHANGEME-random"
+# From addresses allowed to post (must also pass DMARC). Your normal inbox is fine.
+allowed_senders = ["you@example.com"]
+# The group to post into (grab the groupId from a webhook payload / notification).
+line_group_id = "Cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
