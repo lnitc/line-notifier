@@ -1,5 +1,7 @@
 # LINE Group ⇄ Email
 
+📖 **[日本語版 README はこちら / Japanese version](README.ja.md)**
+
 A two-way bridge between a LINE group and email, provisioned with Terraform on
 AWS.
 
